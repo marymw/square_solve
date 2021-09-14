@@ -92,7 +92,8 @@ void Unit_Test(const int MAX_ROOTS) {
         Test_GetQuad_sol(&TestCount,   1,       1,   1, Solution_matrix_forTest,        0,        0, 0);
         Test_GetQuad_sol(&TestCount,   1,       2,  -1, Solution_matrix_forTest, 0.414214,-2.414214, 2);
         Test_GetQuad_sol(&TestCount, eps, 2 * eps, eps, Solution_matrix_forTest,       -1,        0, 1);
-        Test_GetLin_sol (&TestCount,   0,       0,      Solution_matrix_forTest,        0,           3);
-
+        Test_GetLin_sol (&TestCount,            0,   0, Solution_matrix_forTest,        0,           3);
+        Test_GetLin_sol (&TestCount,            1,   1, Solution_matrix_forTest,       -1,           1);
+        
         free(Solution_matrix_forTest);
 }

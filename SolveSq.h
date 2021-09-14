@@ -21,7 +21,7 @@ int     Solution          (double * Solution_matrix, const int equation_type,
 
 int     GetLinSolutions   (double b, double c, double *Solution_matrix);  //определяет количество корней
 int     LinearSolving     (double *Solution_matrix);                      //возвращает решение линейного уравнения
- //возвращает решение квадратного уравнения
+int     GetQuadSolutions  (double a, double b, double c, double *Solution_matrix); //возвращает решение квадратного уравнения
 int     QuadraticSolving  (double *Solution_matrix);
 int     QuestionAgain     ();
 void    Test_GetQuad_sol(int *TestCount,double a, double b, double c, double *Solution_matrix_forTest, double RightX1, double RightX2, int RightRootsNumber);

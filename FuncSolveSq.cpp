@@ -77,12 +77,13 @@ int GetLinSolutions(double b, double c, double *Solution_matrix){//опреде�
                                                            //и записывает их в матрицу
     if ((IsZero(b, 0)) && (IsZero(c,0)))
         return 3;                                     //для бесконечного числа корней
-    if ((IsZero(b, 0)) && (!IsZero(c,0)))
+    else if ((IsZero(b, 0)) && (!IsZero(c,0)))
         return 0;                                     //нет корней
-    if ((!IsZero(b, 0)) && (IsZero(c, 0)))
+    else if ((!IsZero(b, 0)) && (IsZero(c, 0))){
         Solution_matrix[0] = 0 ;                //записали значение корня
         return 1;
-    if ((!IsZero(b, 0))){
+    }
+    else if ((!IsZero(b, 0))){
         Solution_matrix[0] = - c / b ;                //записали значение корня
         #ifdef DEBAG
             printf(" b = %lf, c = %lf, solution = %lf" , b, c, -c / b);

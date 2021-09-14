@@ -24,10 +24,10 @@ bool    IsZero            (double a, double b);
 void    MainGreetings     ();                         
 
 //---------------------------------------------------------
-/** \brief This function determinates the type of equation the user wants to solve (linear or square)
-    \param [in] equation_type  contains 1, if the equation is linear, 2 - if it is square, 0 if the user doesn't want to solve anything
+/** \brief This function asks the user what equation he wants to solve
+    \param [in] equation_type  contains 1, if the equation is linear, 2 - if it is square, 0 if the user doesn't want to solve anything*/
 //---------------------------------------------------------
-void    GetEquationType   (int *equation_type);     
+void    GetEquationType   (int *equation_type);   
 
 //---------------------------------------------------------
 /** \brief This function printf greetings of linear solving*/

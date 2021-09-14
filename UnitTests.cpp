@@ -69,7 +69,7 @@ void Test_GetLin_sol(int *TestCount,double b,
 
     if (RootsNumber != RightRootsNumber){
         printf("\nTest %d is failed.\n", *TestCount);
-        pritnf("Right answer is RightRootsNumber = %d\nYour answer is RootsNumber = %d", RightRootsNumber, RootsNumber);
+        printf("Right answer is RightRootsNumber = %d\nYour answer is RootsNumber = %d", RightRootsNumber, RootsNumber);
     }
 
     if((!IsZero(Solution_matrix_forTest[0], RightX1)) && RightRootsNumber == 1){

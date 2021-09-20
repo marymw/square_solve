@@ -3,17 +3,17 @@
 
 
 
-void Test_GetQuad_sol(int *TestCount,double a,
-                                     double b,
-                                     double c,
-                                     double *Solution_matrix_forTest,
-                                     double RightX1,
-                                     double RightX2,
-                                     int RightRootsNumber){
+void Test_GetQuad_sol(int *TestCount,const double a,
+                                     const double b,
+                                     const double c,
+                                           double *Solution_matrix_forTest,
+                                     const double RightX1,
+                                     const double RightX2,
+                                     const int RightRootsNumber){
 
     int RootsNumber = GetQuadSolutions(a, b, (double)c, Solution_matrix_forTest);
 
-    #ifdef DEBAG 
+    #ifdef DEBUG 
         printf ("\nЗначение TestCount = %d\n", *TestCount);
     #endif
 
@@ -22,7 +22,7 @@ void Test_GetQuad_sol(int *TestCount,double a,
         printf("Right answer is RightRootsNumber = %d\nYour answer is RootsNumber = %d", RightRootsNumber, RootsNumber);
     }
 
-    #ifdef DEBAG
+    #ifdef DEBUG
         printf("%lf\n", Solution_matrix_forTest[0]);
         printf("%lf\n", RightX1);
         printf("%d\n", IsZero(Solution_matrix_forTest[0], RightX1));
@@ -45,13 +45,13 @@ void Test_GetQuad_sol(int *TestCount,double a,
     }
     else printf("Test %d is OK\n", *TestCount);
 
-    #ifdef DEBAG 
+    #ifdef DEBUG 
         printf ("\nЗначение TestCount = %d\n", *TestCount);
     #endif
 
     (*TestCount)++;
 
-    #ifdef DEBAG 
+    #ifdef DEBUG 
         printf ("\nЗначение TestCount = %d\n", *TestCount);
         printf("я пришел\n");
     #endif
@@ -59,11 +59,11 @@ void Test_GetQuad_sol(int *TestCount,double a,
 }
 
 
-void Test_GetLin_sol(int *TestCount,double b,
-                                    double c,
-                                    double *Solution_matrix_forTest,
-                                    double RightX1, 
-                                    int RightRootsNumber){
+void Test_GetLin_sol(int *TestCount,const double b,
+                                    const double c,
+                                          double *Solution_matrix_forTest,
+                                    const double RightX1, 
+                                    const int RightRootsNumber){
 
     int RootsNumber = GetLinSolutions(b, c, Solution_matrix_forTest);
 
@@ -82,7 +82,7 @@ void Test_GetLin_sol(int *TestCount,double b,
     (*TestCount)++;
 }
 
-void Unit_Test(const int MAX_ROOTS) {
+void Unit_Test(const int MAX_ROOTS){
         int TestCount = 1;
         double *Solution_matrix_forTest = (double *)calloc(MAX_ROOTS, sizeof(double));
 
@@ -97,3 +97,4 @@ void Unit_Test(const int MAX_ROOTS) {
         
         free(Solution_matrix_forTest);
 }
+

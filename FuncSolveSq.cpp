@@ -3,8 +3,8 @@
 
 int     GetQuadSolutions  (double a, double b, int c, double *Solution_matrix);
 
-bool IsZero(double a, double b){        //для сравнения с нулем разности чисел
-    return abs(a - b) <= eps;
+bool IsZero(const double a, const double b){        //для сравнения с нулем разности чисел
+    return fabs(a - b) <= eps;
 }
      
 
@@ -24,7 +24,7 @@ void GetEquationType(int *equation_type){ //определяет тип урав
 
         if ((*equation_type) == 1)          
             return;
-        if ((*equation_type) == 2)
+        else if ((*equation_type) == 2)
             return;
         else {                      //если введено не 1 и не 2, то пользователь не хочет решать уравнения
             *equation_type   =  0;
@@ -40,9 +40,9 @@ int Solution(  double *Solution_matrix,
                                                                            
     if (equation_type == 0)
         return -1;
-    if (equation_type == 1)
+    else if (equation_type == 1)
         return PtrOnSolvingFunc1(Solution_matrix);      
-    if (equation_type == 2)
+    else if (equation_type == 2)
         return PtrOnSolvingFunc2(Solution_matrix);
     else {
         printf("Error in funcion 'Solution': wrong equation_type");
@@ -58,22 +58,14 @@ void LinGreetings(){ //приветствие линейного уравнен�
 
 
 void GetLinCoefficient(double *b, double *c){ //получает коэффициенты линейного уравнения
-    int check1 = 0;     //для проверок корректного ввода
-    int check2 = 0;
-    do{                 //циклы до тех пор, пока пользователь не введёт корректные коэффициенты
-        printf("Enter coefficient with argument\n\n");
-        check1 = scanf("%lf", b);
-    }while (check1 != 1);
+    GetCoefficient(1, b);
+    GetCoefficient(0, c);
 
-    do{
-        printf("Enter free term\n");
-        check2 = scanf("%lf", c);
-    }while (check2 != 1);
     PrintSeparator();
 }
 
 
-int GetLinSolutions(double b, double c, double *Solution_matrix){//определяет количество корней
+int GetLinSolutions(const double b, const double c, double *Solution_matrix){//определяет количество корней
                                                            //и записывает их в матрицу
     if ((IsZero(b, 0)) && (IsZero(c,0)))
         return 3;                                     //для бесконечного числа корней
@@ -135,30 +127,17 @@ void QuadGreetings(){                                           //приветс
 
 
 void GetQuadCoefficient(double *a, double *b, double *c){
-    int check1 = 0;                                             //проверки для корректного ввода
-    int check2 = 0;
-    int check3 = 0;
-    do {                                                        //циклы до того как не введут корректные значения
-        printf("Enter the coefficient at the second power of the argument:\n");
-        check1 = scanf("%lf", a);
-    }while (check1 != 1);
+    GetCoefficient(2, a);
+    GetCoefficient(1, b);
+    GetCoefficient(0, c);
 
-    do{
-        printf("Enter the coefficient at the first power of the argument:\n");
-        check2 = scanf("%lf", b);
-    }while(check2 != 1);
-
-    do{
-        printf("Enter free term:\n");
-        check3 = scanf("%lf", c);
-    }while(check3 != 1);
     PrintSeparator();
 
     return;
 }
 
 
-int GetQuadSolutions(double a, double b, double c, double *Solution_matrix){//возвращает количество корней
+int GetQuadSolutions(const double a, const double b, const double c, double *Solution_matrix){//возвращает количество корней
                                                                             //и записывает их в матрицу
     double Discriminant = ( b * b - 4 * a * c );                            //вычисление дискриминанта
 
@@ -214,4 +193,12 @@ int QuestionAgain(){                               //спрашивает у п�
 
 void PrintSeparator(){                                  //печатает разделитель для красоты
     printf("__________________________________\n\n");
+}
+
+void GetCoefficient(const int power, double *coefficient){ 
+    int check = 0;                                 //запрашивает у пользователя коэффициент
+    do {                                                        //циклы до того как не введут корректные значения
+        printf("Enter the coefficient at the %d power of the argument:\n", power);
+        check = scanf("%lf", coefficient);
+    }while (check != 1);
 }

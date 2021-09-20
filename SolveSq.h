@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-//#define DEBAG 1
+//#define DEBUG 1
 
 //---------------------------------------------------------
 /** \brief Constant eps defines epsilon neighborhood of zero
@@ -16,19 +16,25 @@ double const eps = 1e-6;
     \param [in] b  The second number
     \return true, if the difference between the numbers lies in the epsilon neighborhood of zero */
 //---------------------------------------------------------
-bool    IsZero            (double a, double b);   
+bool IsZero(const double a, const double b);   
 
 //---------------------------------------------------------
 /** \brief This function print main greetings*/
 //---------------------------------------------------------
-void    MainGreetings     ();                         
+void    MainGreetings     ();   
+//ЭТУ ФУНК ДОБАВИЛА!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //---------------------------------------------------------
 /** \brief This function asks the user what equation he wants to solve
     \param [in] equation_type  contains 1, if the equation is linear, 2 - if it is square, 0 if the user doesn't want to solve anything*/
 //---------------------------------------------------------
-void    GetEquationType   (int *equation_type);   
+void    GetEquationType   (int *equation_type);       //возвращает тип уравнения, которое хочет решить пользователь                      
 
+//---------------------------------------------------------
+/** \brief This function determinates the type of equation the user wants to solve (linear or square)
+    \param [in] equation_type  contains 1, if the equation is linear, 2 - if it is square, 0 if the user doesn't want to solve anything
+//---------------------------------------------------------
+void    GetEquationType   (int *equation_type);     
 //---------------------------------------------------------
 /** \brief This function printf greetings of linear solving*/
 //---------------------------------------------------------
@@ -91,7 +97,7 @@ int     Solution          (double * Solution_matrix, const int equation_type,
     \param [in] Solution_matrix contains an array with the roots of the equation
     \return number of roots*/
 //---------------------------------------------------------
-int     GetLinSolutions   (double b, double c, double *Solution_matrix); 
+int GetLinSolutions(const double b, const double c, double *Solution_matrix); 
 
 //---------------------------------------------------------
 /** \brief This function solves a linear equation by sequentially calling the corresponding functions 
@@ -108,7 +114,7 @@ int     LinearSolving     (double *Solution_matrix);
     \param [in] Solution_matrix contains an array with the roots of the equation
     \return number of roots*/
 //---------------------------------------------------------
-int     GetQuadSolutions  (double a, double b, double c, double *Solution_matrix); 
+int GetQuadSolutions(const double a, const double b, const double c, double *Solution_matrix); 
 
 //---------------------------------------------------------
 /** \brief This function solves a square equation by sequentially calling the corresponding functions 
@@ -133,7 +139,13 @@ int     QuestionAgain     ();
     \param [in] RightX2 is a right value of second root of  square equipment f$ ax^2 + bx + c = 0 \f$
     \param [in] RightRootsNumber shows the right number of roots of square equipment f$ ax^2 + bx + c = 0 \f$ */
 //---------------------------------------------------------
-void    Test_GetQuad_sol(int *TestCount,double a, double b, double c, double *Solution_matrix_forTest, double RightX1, double RightX2, int RightRootsNumber);
+void Test_GetQuad_sol(int *TestCount,const double a,
+                                     const double b,
+                                     const double c,
+                                           double *Solution_matrix_forTest,
+                                     const double RightX1,
+                                     const double RightX2,
+                                     const int RightRootsNumber);
 
 //---------------------------------------------------------
 /** \brief This function tests the "GetLinSolutions" of solving linear equipment \f$ bx + c = 0 \f$ by many tests 
@@ -144,7 +156,11 @@ void    Test_GetQuad_sol(int *TestCount,double a, double b, double c, double *So
     \param [in] RightX1 is a right value of first root of  square equipment f$ ax^2 + bx + c = 0 \f$
     \param [in] RightRootsNumber shows the right number of roots of square equipment f$ ax^2 + bx + c = 0 \f$ */
 //---------------------------------------------------------
-void    Test_GetLin_sol(int *TestCount,double b, double c, double *Solution_matrix_forTest, double RightX1, int RightRootsNumber);
+void Test_GetLin_sol(int *TestCount,const double b,
+                                    const double c,
+                                          double *Solution_matrix_forTest,
+                                    const double RightX1, 
+                                    const int RightRootsNumber);
 
 
 //---------------------------------------------------------
@@ -152,3 +168,11 @@ void    Test_GetLin_sol(int *TestCount,double b, double c, double *Solution_matr
     \param [in] MAX_ROOTS shows the max number of roots*/
 //---------------------------------------------------------
 void    Unit_Test(const int MAX_ROOTS);
+
+//---------------------------------------------------------
+/** \brief This function asks the user to enter a coefficient at the degree of the argument
+    \param [in] power shows at what degree of the argument the degree is requested
+    \param [in] coefficient contains the value of the coefficient at some degree*/
+//---------------------------------------------------------
+void GetCoefficient(const int power, double *coefficient);
+

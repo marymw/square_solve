@@ -1,7 +1,6 @@
-
 #include "SolveSq.h" 
 
-int main() {
+int main(){
     int       UserAnswer = 0;                  //показывает, хочет ли пользователь решить ещё одно уравнение
     const int MAX_ROOTS  = 3;
     
@@ -22,7 +21,7 @@ int main() {
         int RootsNumber = Solution(Solution_matrix, equation_type, *LinearSolving,
         														   *QuadraticSolving);//определяет какой тип уравнения
  
-        #ifdef DEBAG
+        #ifdef DEBUG
             printf("%d\n", RootsNumber);
         #endif
 

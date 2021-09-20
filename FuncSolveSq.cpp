@@ -32,7 +32,7 @@ void GetEquationType(int *equation_type){ //определяет тип урав
 }
 
 
-int Solution(  double *Solution_matrix, const int equation_type, int (*PtrOnSolvingFunc1) (double *),
+int Solution(double *Solution_matrix, const int equation_type, int (*PtrOnSolvingFunc1) (double *),
                                                                  int (*PtrOnSolvingFunc2) (double *)){ //по типу уравнения определяет 
 	                                                                                               //какую функцию для решения вызвать 
     assert(Solution_matrix);
